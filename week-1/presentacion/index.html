@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explorador: Arrays Avanzados - JavaScript</title>
+    <!-- Vinculamos el CSS externo -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>🐱 Arrays Avanzados en JavaScript</h1>
+        <p>Explorador interactivo de map, filter, reduce y más</p>
+    </header>
+
+    <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab('map')">📍 MAP</button>
+        <button class="tab-btn" onclick="switchTab('filter')">🔍 FILTER</button>
+        <button class="tab-btn" onclick="switchTab('reduce')">➕ REDUCE</button>
+        <button class="tab-btn" onclick="switchTab('chain')">🔗 ENCADENAMIENTO</button>
+        <button class="tab-btn" onclick="switchTab('api')">🌐 API REAL</button>
+        <button class="tab-btn" onclick="switchTab('inmutable')">🛡️ INMUTABILIDAD</button>
+    </div>
+
+    <div class="content">
+        <!-- TAB: MAP -->
+        <section id="map" class="section active">
+            <div class="panel">
+                <h2>📍 MAP - Transformar Elementos</h2>
+                <p class="explanation">
+                    El método <strong>.map()</strong> es fundamental en la programación funcional. Su función es recorrer todo el array y devolver uno <strong>nuevo</strong> con la misma cantidad de elementos, pero transformados por la función que le pasemos.
+                </p>
+                <p class="explanation">
+                    <em>Uso común:</em> Convertir datos de un formato a otro (ej. de grados Celsius a Fahrenheit, o de objetos complejos a strings simples) sin alterar los datos originales.
+                </p>
+
+                <h3>Ejemplo: Duplicar Edades de Gatos</h3>
+                <div class="code-block">const misGatitos = [
+                    { nombre: 'Milo', edad: 1 },
+                    { nombre: 'Cleo', edad: 2 }
+                    ];
+
+                    misGatitos.map(g => ({
+                    ...g,
+                    edad: g.edad * 2
+                    }));</div>
+
+                <button onclick="ejecutarMap()">▶️ Ejecutar Ejemplo</button>
+            </div>
+
+            <div class="panel">
+                <h2>Resultado</h2>
+                <div id="output-map" class="output">
+                    <p class="loading">Haz clic en "Ejecutar Ejemplo"</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB: FILTER -->
+        <section id="filter" class="section">
+            <div class="panel">
+                <h2>🔍 FILTER - Seleccionar Elementos</h2>
+                <p class="explanation">
+                    <strong>.filter()</strong> actúa como un colador. Crea un nuevo array que contiene solo los elementos que cumplen una condición específica (aquellos para los que la función devuelve <code>true</code>).
+                </p>
+                <p class="explanation">
+                    <em>Uso común:</em> Eliminar elementos no deseados, buscar resultados en una lista, o categorizar datos (ej. usuarios activos vs inactivos).
+                </p>
+
+                <h3>Ejemplo: Gatos Jóvenes (edad < 2)</h3>
+                <div class="code-block">const poblacion = [
+                    { nombre: 'Salem', edad: 3 },
+                    { nombre: 'Kitty', edad: 1 },
+                    { nombre: 'Garfield', edad: 5 },
+                    { nombre: 'Whiskers', edad: 1 }
+                    ];
+
+                    poblacion.filter(g => g.edad < 2);</div>
+
+                <button onclick="ejecutarFilter()">▶️ Ejecutar Ejemplo</button>
+            </div>
+
+            <div class="panel">
+                <h2>Resultado</h2>
+                <div id="output-filter" class="output">
+                    <p class="loading">Haz clic en "Ejecutar Ejemplo"</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB: REDUCE -->
+        <section id="reduce" class="section">
+            <div class="panel">
+                <h2>➕ REDUCE - Agregar en Un Valor</h2>
+                <p class="explanation">
+                    <strong>.reduce()</strong> es el más poderoso y flexible. Toma una lista completa y la "reduce" a un único valor (un número, un objeto, o incluso otro array) usando un "acumulador" que recuerda el resultado anterior.
+                </p>
+                <p class="explanation">
+                    <em>Uso común:</em> Sumar totales (precios de un carrito), agrupar datos por categorías, o aplanar arrays de arrays.
+                </p>
+
+                <h3>Ejemplo: Sumar Puntos de Arañazos</h3>
+                <div class="code-block">const puntos = [5, 10, 3, 7];
+
+                    puntos.reduce(
+                    (acumulador, actual) =>
+                    acumulador + actual,
+                    0  // valor inicial
+                    );</div>
+
+                <button onclick="ejecutarReduce()">▶️ Ejecutar Ejemplo</button>
+            </div>
+
+            <div class="panel">
+                <h2>Resultado</h2>
+                <div id="output-reduce" class="output">
+                    <p class="loading">Haz clic en "Ejecutar Ejemplo"</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB: ENCADENAMIENTO -->
+        <section id="chain" class="section">
+            <div class="panel">
+                <h2>🔗 Encadenamiento (Method Chaining)</h2>
+                <p class="explanation">
+                    Gracias a que estos métodos devuelven nuevos arrays, podemos conectarlos uno tras otro. Esto permite crear "tuberías" de procesamiento de datos legibles y elegantes.
+                </p>
+                <p class="explanation">
+                    <em>Estrategia:</em> Primero <strong>filtras</strong> lo que no sirve, luego <strong>transformas</strong> (map) lo que queda, y finalmente <strong>reduces</strong> todo a un resultado.
+                </p>
+
+                <h3>Ejemplo: Procesar Gatos Ligeros</h3>
+                <div class="code-block">const gatos = [
+                    { nombre: 'Bolt', peso: 4 },
+                    { nombre: 'Puff', peso: 2 },
+                    { nombre: 'Shadow', peso: 5 },
+                    { nombre: 'Fluffy', peso: 3 }
+                    ];
+
+                    gatos
+                    .filter(g => g.peso < 5)
+                    .map(g => g.peso * 1.1)
+                    .reduce((a, p) => a + p, 0);</div>
+
+                <button onclick="ejecutarChain()">▶️ Ejecutar Ejemplo</button>
+            </div>
+
+            <div class="panel">
+                <h2>Resultado Paso a Paso</h2>
+                <div id="output-chain" class="output">
+                    <p class="loading">Haz clic en "Ejecutar Ejemplo"</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB: API REAL -->
+        <section id="api" class="section">
+            <div class="panel">
+                <h2>🌐 Transformación de API Real</h2>
+                <p class="explanation">
+                    En el mundo real, los datos del servidor (Backend) rara vez llegan listos para usar. Usamos programación declarativa para limpiar y adaptar el JSON antes de mostrarlo en la UI.
+                </p>
+
+                <h3>Filtro: Top 10 Gatos Amigables</h3>
+                <div class="code-block">fetch('https://api.thecatapi.com/v1/breeds')
+                    .then(r => r.json())
+                    .then(razas => {
+                    razas
+                    .filter(r => r.affection_level >= 4)
+                    .slice(0, 10)
+                    .map(r => ({...}))
+                    })</div>
+
+                <button onclick="ejecutarAPI()">▶️ Traer Datos de API</button>
+                <div id="loading-api" style="display:none;" class="loading">⏳ Cargando datos...</div>
+            </div>
+
+            <div class="panel">
+                <h2>Resultado: Top 10 Gatos Amigables</h2>
+                <div id="output-api" class="output">
+                    <p class="loading">Haz clic en "Traer Datos de API"</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB: INMUTABILIDAD -->
+        <section id="inmutable" class="section">
+            <div class="panel">
+                <h2>🛡️ Inmutabilidad</h2>
+                <p class="explanation">
+                    La inmutabilidad significa no modificar los datos originales. En lugar de cambiar una propiedad de un objeto existente, creamos una copia nueva con el cambio.
+                </p>
+                <p class="explanation">
+                    <em>Por qué importa:</em> Evita "efectos secundarios" (bugs impredecibles) y es la base de librerías modernas como React o Redux, permitiendo comparar el estado anterior y el nuevo fácilmente.
+                </p>
+
+                <h3>Ejemplo: Aumentar Stock</h3>
+                <div class="code-block">const original = [
+                    { id: 1, nombre: 'Producto A', stock: 10 },
+                    { id: 2, nombre: 'Producto B', stock: 5 }
+                    ];
+
+                    const modificado = original.map(p => ({
+                    ...p,
+                    stock: p.stock + 5
+                    }));
+
+                    // original intacto ✓
+                    // modificado con cambios ✓</div>
+
+                <button onclick="ejecutarInmutable()">▶️ Ejecutar Ejemplo</button>
+            </div>
+
+            <div class="panel">
+                <h2>Comparación</h2>
+                <div id="output-inmutable" class="output">
+                    <p class="loading">Haz clic en "Ejecutar Ejemplo"</p>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<!-- Vinculamos el Javascript al final -->
+<script src="app.js"></script>
+</body>
+</html>

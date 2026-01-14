@@ -1,0 +1,33 @@
+* {
+    box-sizing: border-box;
+    font-family: Aptos, sans-serif;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #6a11cb, #5602ef);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.card h1 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.card p {
+    font-size: 16px;
+    color: #555;
+}

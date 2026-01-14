@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="EduLearn - Plataforma educativa para aprender programación y desarrollo web">
+  <title>EduLearn - Aprende a Programar</title>
+  <link rel="stylesheet" href="assets/styles/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+  <link href="assets/styles/css2.css" rel="stylesheet">
+</head>
+<body>
+  <!-- ===== HEADER / NAVEGACIÓN ===== -->
+  <header class="header">
+    <div class="header__container">
+      <a href="#" class="header__logo">
+        <span class="header__logo-icon">📚</span>
+        <span class="header__logo-text">EduLearn</span>
+      </a>
+      
+      <nav class="nav">
+        <ul class="nav__list">
+          <li class="nav__item">
+            <a href="#inicio" class="nav__link nav__link--active">Inicio</a>
+          </li>
+          <li class="nav__item">
+            <a href="#cursos" class="nav__link">Cursos</a>
+          </li>
+          <li class="nav__item">
+            <a href="#caracteristicas" class="nav__link">Características</a>
+          </li>
+          <li class="nav__item">
+            <a href="#contacto" class="nav__link">Contacto</a>
+          </li>
+        </ul>
+      </nav>
+      
+      <button class="header__menu-btn" aria-label="Abrir menú">
+        <span class="header__menu-icon"></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== HERO SECTION ===== -->
+    <section id="inicio" class="hero">
+      <div class="hero__container">
+        <div class="hero__content">
+          <span class="hero__badge">🎓 +10,000 estudiantes activos</span>
+          <h1 class="hero__title">Aprende a <span class="hero__title--highlight">Programar</span> desde Cero</h1>
+          <p class="hero__description">
+            Domina HTML, CSS y JavaScript con cursos prácticos diseñados por expertos. 
+            Construye proyectos reales y transforma tu carrera.
+          </p>
+          <div class="hero__actions">
+            <a href="#cursos" class="btn btn--primary">Explorar Cursos</a>
+            <a href="#" class="btn btn--secondary">Ver Demo</a>
+          </div>
+          <div class="hero__stats">
+            <div class="hero__stat">
+              <span class="hero__stat-number">50+</span>
+              <span class="hero__stat-label">Cursos</span>
+            </div>
+            <div class="hero__stat">
+              <span class="hero__stat-number">200+</span>
+              <span class="hero__stat-label">Lecciones</span>
+            </div>
+            <div class="hero__stat">
+              <span class="hero__stat-number">4.9</span>
+              <span class="hero__stat-label">Rating</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero__image">
+          <div class="hero__image-decoration"></div>
+          <img src="assets/img/photo-1516321318423-f06f85e504b3.jpeg" alt="Estudiante programando" class="hero__img">
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CURSOS SECTION ===== -->
+    <section id="cursos" class="courses">
+      <div class="courses__container">
+        <div class="section-header">
+          <span class="section-header__badge">Nuestros Cursos</span>
+          <h2 class="section-header__title">Cursos Populares</h2>
+          <p class="section-header__description">
+            Explora nuestra selección de cursos más valorados por la comunidad
+          </p>
+        </div>
+
+        <!-- Filtros de cursos -->
+        <div class="courses__filters">
+          <button class="filter-btn filter-btn--active" data-filter="todos">Todos</button>
+          <button class="filter-btn" data-filter="html">HTML</button>
+          <button class="filter-btn" data-filter="css">CSS</button>
+          <button class="filter-btn" data-filter="javascript">JavaScript</button>
+          <button class="filter-btn" data-filter="react">React</button>
+        </div>
+
+        <!-- Grid de cursos -->
+        <div class="courses__grid">
+          <!-- Curso 1 -->
+          <article class="course-card" data-category="html">
+            <div class="course-card__image">
+              <img src="assets/img/photo-1621839673705-6617adf9e890.jpeg" alt="Curso de HTML5">
+              <span class="course-card__badge course-card__badge--html">HTML5</span>
+            </div>
+            <div class="course-card__content">
+              <div class="course-card__meta">
+                <span class="course-card__level">Principiante</span>
+                <span class="course-card__duration">⏱️ 8 horas</span>
+              </div>
+              <h3 class="course-card__title">HTML5 Fundamentos</h3>
+              <p class="course-card__description">
+                Aprende la estructura y semántica de HTML5 desde cero con proyectos prácticos.
+              </p>
+              <div class="course-card__footer">
+                <div class="course-card__rating">
+                  <span class="course-card__stars">⭐⭐⭐⭐⭐</span>
+                  <span class="course-card__reviews">(128)</span>
+                </div>
+                <span class="course-card__price">Gratis</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Curso 2 -->
+          <article class="course-card" data-category="css">
+            <div class="course-card__image">
+              <img src="assets/img/photo-1507003211169-0a1dd7228f2d_002.jpeg" alt="Curso de CSS3">
+              <span class="course-card__badge course-card__badge--css">CSS3</span>
+            </div>
+            <div class="course-card__content">
+              <div class="course-card__meta">
+                <span class="course-card__level">Principiante</span>
+                <span class="course-card__duration">⏱️ 12 horas</span>
+              </div>
+              <h3 class="course-card__title">CSS3 Moderno</h3>
+              <p class="course-card__description">
+                Domina Flexbox, Grid y animaciones CSS para crear diseños impresionantes.
+              </p>
+              <div class="course-card__footer">
+                <div class="course-card__rating">
+                  <span class="course-card__stars">⭐⭐⭐⭐⭐</span>
+                  <span class="course-card__reviews">(256)</span>
+                </div>
+                <span class="course-card__price">$29</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Curso 3 -->
+          <article class="course-card" data-category="javascript">
+            <div class="course-card__image">
+              <img src="assets/img/photo-1627398242454-45a1465c2479.jpeg" alt="Curso de JavaScript">
+              <span class="course-card__badge course-card__badge--js">JavaScript</span>
+            </div>
+            <div class="course-card__content">
+              <div class="course-card__meta">
+                <span class="course-card__level">Intermedio</span>
+                <span class="course-card__duration">⏱️ 20 horas</span>
+              </div>
+              <h3 class="course-card__title">JavaScript Esencial</h3>
+              <p class="course-card__description">
+                Aprende JavaScript desde variables hasta async/await con ejercicios prácticos.
+              </p>
+              <div class="course-card__footer">
+                <div class="course-card__rating">
+                  <span class="course-card__stars">⭐⭐⭐⭐⭐</span>
+                  <span class="course-card__reviews">(512)</span>
+                </div>
+                <span class="course-card__price">$49</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Curso 4 -->
+          <article class="course-card" data-category="javascript">
+            <div class="course-card__image">
+              <img src="assets/img/photo-1555066931-4365d14bab8c.jpeg" alt="Curso de DOM">
+              <span class="course-card__badge course-card__badge--js">DOM</span>
+            </div>
+            <div class="course-card__content">
+              <div class="course-card__meta">
+                <span class="course-card__level">Intermedio</span>
+                <span class="course-card__duration">⏱️ 10 horas</span>
+              </div>
+              <h3 class="course-card__title">Manipulación del DOM</h3>
+              <p class="course-card__description">
+                Domina la manipulación del DOM y crea interfaces interactivas dinámicas.
+              </p>
+              <div class="course-card__footer">
+                <div class="course-card__rating">
+                  <span class="course-card__stars">⭐⭐⭐⭐</span>
+                  <span class="course-card__reviews">(89)</span>
+                </div>
+                <span class="course-card__price">$39</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Curso 5 -->
+          <article class="course-card" data-category="react">
+            <div class="course-card__image">
+              <img src="assets/img/photo-1633356122544-f134324a6cee.jpeg" alt="Curso de React">
+              <span class="course-card__badge course-card__badge--react">React</span>
+            </div>
+            <div class="course-card__content">
+              <div class="course-card__meta">
+                <span class="course-card__level">Avanzado</span>
+                <span class="course-card__duration">⏱️ 25 horas</span>
+              </div>
+              <h3 class="course-card__title">React desde Cero</h3>
+              <p class="course-card__description">
+                Construye aplicaciones modernas con React, Hooks y manejo de estado.
+              </p>
+              <div class="course-card__footer">
+                <div class="course-card__rating">
+                  <span class="course-card__stars">⭐⭐⭐⭐⭐</span>
+                  <span class="course-card__reviews">(342)</span>
+                </div>
+                <span class="course-card__price">$79</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Curso 6 -->
+          <article class="course-card" data-category="css">
+            <div class="course-card__image">
+              <img src="assets/img/photo-1545670723-196ed0954986.jpeg" alt="Curso de Responsive Design">
+              <span class="course-card__badge course-card__badge--css">Responsive</span>
+            </div>
+            <div class="course-card__content">
+              <div class="course-card__meta">
+                <span class="course-card__level">Intermedio</span>
+                <span class="course-card__duration">⏱️ 8 horas</span>
+              </div>
+              <h3 class="course-card__title">Diseño Responsive</h3>
+              <p class="course-card__description">
+                Crea sitios web que se adaptan perfectamente a cualquier dispositivo.
+              </p>
+              <div class="course-card__footer">
+                <div class="course-card__rating">
+                  <span class="course-card__stars">⭐⭐⭐⭐</span>
+                  <span class="course-card__reviews">(167)</span>
+                </div>
+                <span class="course-card__price">$35</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="courses__cta">
+          <a href="#" class="btn btn--outline">Ver Todos los Cursos</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CARACTERÍSTICAS SECTION ===== -->
+    <section id="caracteristicas" class="features">
+      <div class="features__container">
+        <div class="section-header">
+          <span class="section-header__badge">¿Por qué elegirnos?</span>
+          <h2 class="section-header__title">Características Destacadas</h2>
+          <p class="section-header__description">
+            Todo lo que necesitas para convertirte en un desarrollador profesional
+          </p>
+        </div>
+
+        <div class="features__grid">
+          <div class="feature-card">
+            <div class="feature-card__icon">🎯</div>
+            <h3 class="feature-card__title">Proyectos Reales</h3>
+            <p class="feature-card__description">
+              Aprende construyendo proyectos del mundo real que podrás agregar a tu portafolio.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-card__icon">👨‍🏫</div>
+            <h3 class="feature-card__title">Instructores Expertos</h3>
+            <p class="feature-card__description">
+              Cursos creados por desarrolladores profesionales con años de experiencia.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-card__icon">📱</div>
+            <h3 class="feature-card__title">Aprende en Cualquier Lugar</h3>
+            <p class="feature-card__description">
+              Accede a los cursos desde tu computadora, tablet o teléfono móvil.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-card__icon">🏆</div>
+            <h3 class="feature-card__title">Certificados</h3>
+            <p class="feature-card__description">
+              Obtén certificados verificables al completar cada curso exitosamente.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-card__icon">💬</div>
+            <h3 class="feature-card__title">Comunidad Activa</h3>
+            <p class="feature-card__description">
+              Únete a nuestra comunidad de estudiantes y resuelve dudas en tiempo real.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-card__icon">🔄</div>
+            <h3 class="feature-card__title">Contenido Actualizado</h3>
+            <p class="feature-card__description">
+              Cursos constantemente actualizados con las últimas tecnologías y tendencias.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TESTIMONIOS SECTION ===== -->
+    <section class="testimonials">
+      <div class="testimonials__container">
+        <div class="section-header">
+          <span class="section-header__badge">Testimonios</span>
+          <h2 class="section-header__title">Lo que dicen nuestros estudiantes</h2>
+        </div>
+
+        <div class="testimonials__grid">
+          <div class="testimonial-card">
+            <div class="testimonial-card__content">
+              <p class="testimonial-card__text">
+                "Gracias a EduLearn conseguí mi primer trabajo como desarrollador frontend. 
+                Los cursos son muy prácticos y los instructores explican todo de manera clara."
+              </p>
+            </div>
+            <div class="testimonial-card__author">
+              <img src="assets/img/photo-1507003211169-0a1dd7228f2d.jpeg" alt="Carlos García" class="testimonial-card__avatar">
+              <div class="testimonial-card__info">
+                <span class="testimonial-card__name">Carlos García</span>
+                <span class="testimonial-card__role">Frontend Developer</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-card__content">
+              <p class="testimonial-card__text">
+                "Los proyectos prácticos marcan la diferencia. Ahora tengo un portafolio 
+                profesional y la confianza para aplicar a trabajos de desarrollo."
+              </p>
+            </div>
+            <div class="testimonial-card__author">
+              <img src="assets/img/photo-1494790108377-be9c29b29330.jpeg" alt="María López" class="testimonial-card__avatar">
+              <div class="testimonial-card__info">
+                <span class="testimonial-card__name">María López</span>
+                <span class="testimonial-card__role">Estudiante</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-card__content">
+              <p class="testimonial-card__text">
+                "La comunidad de EduLearn es increíble. Siempre hay alguien dispuesto a 
+                ayudar y los mentores responden rápidamente."
+              </p>
+            </div>
+            <div class="testimonial-card__author">
+              <img src="assets/img/photo-1472099645785-5658abf4ff4e.jpeg" alt="Andrés Martínez" class="testimonial-card__avatar">
+              <div class="testimonial-card__info">
+                <span class="testimonial-card__name">Andrés Martínez</span>
+                <span class="testimonial-card__role">Full Stack Developer</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACTO SECTION ===== -->
+    <section id="contacto" class="contact">
+      <div class="contact__container">
+        <div class="contact__content">
+          <div class="section-header section-header--left">
+            <span class="section-header__badge">Contacto</span>
+            <h2 class="section-header__title">¿Tienes preguntas?</h2>
+            <p class="section-header__description">
+              Estamos aquí para ayudarte. Envíanos un mensaje y te responderemos lo antes posible.
+            </p>
+          </div>
+
+          <div class="contact__info">
+            <div class="contact__info-item">
+              <span class="contact__info-icon">📧</span>
+              <div>
+                <h4 class="contact__info-title">Email</h4>
+                <p class="contact__info-text">hola@edulearn.com</p>
+              </div>
+            </div>
+            <div class="contact__info-item">
+              <span class="contact__info-icon">📍</span>
+              <div>
+                <h4 class="contact__info-title">Ubicación</h4>
+                <p class="contact__info-text">Ciudad de México, México</p>
+              </div>
+            </div>
+            <div class="contact__info-item">
+              <span class="contact__info-icon">🕐</span>
+              <div>
+                <h4 class="contact__info-title">Horario</h4>
+                <p class="contact__info-text">Lun - Vie: 9:00 - 18:00</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <form class="contact__form" id="contactForm">
+          <div class="form-group">
+            <label for="nombre" class="form-label">Nombre completo</label>
+            <input type="text" id="nombre" name="nombre" class="form-input" placeholder="Tu nombre" required="">
+            <span class="form-error">Por favor ingresa tu nombre</span>
+          </div>
+
+          <div class="form-group">
+            <label for="email" class="form-label">Correo electrónico</label>
+            <input type="email" id="email" name="email" class="form-input" placeholder="tu@email.com" required="">
+            <span class="form-error">Por favor ingresa un email válido</span>
+          </div>
+
+          <div class="form-group">
+            <label for="asunto" class="form-label">Asunto</label>
+            <select id="asunto" name="asunto" class="form-select" required="">
+              <option value="" selected="selected">Selecciona un asunto</option>
+              <option value="cursos">Información sobre cursos</option>
+              <option value="soporte">Soporte técnico</option>
+              <option value="pagos">Pagos y facturación</option>
+              <option value="otro">Otro</option>
+            </select>
+            <span class="form-error">Por favor selecciona un asunto</span>
+          </div>
+
+          <div class="form-group">
+            <label for="mensaje" class="form-label">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" class="form-textarea" placeholder="Escribe tu mensaje aquí..." rows="5" required=""></textarea>
+            <span class="form-error">Por favor escribe tu mensaje</span>
+          </div>
+
+          <button type="submit" class="btn btn--primary btn--full">Enviar Mensaje</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ===== NEWSLETTER SECTION ===== -->
+    <section class="newsletter">
+      <div class="newsletter__container">
+        <div class="newsletter__content">
+          <h2 class="newsletter__title">Suscríbete a nuestro Newsletter</h2>
+          <p class="newsletter__description">
+            Recibe actualizaciones sobre nuevos cursos, ofertas especiales y tips de programación.
+          </p>
+        </div>
+        <form class="newsletter__form" id="newsletterForm">
+          <input type="email" class="newsletter__input" placeholder="tu@email.com" required="">
+          <button type="submit" class="btn btn--accent">Suscribirse</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer__container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="#" class="footer__logo">
+            <span class="footer__logo-icon">📚</span>
+            <span class="footer__logo-text">EduLearn</span>
+          </a>
+          <p class="footer__description">
+            Plataforma educativa dedicada a formar a la próxima generación de desarrolladores web.
+          </p>
+          <div class="footer__social">
+            <a href="#" class="footer__social-link" aria-label="Facebook">📘</a>
+            <a href="#" class="footer__social-link" aria-label="Twitter">🐦</a>
+            <a href="#" class="footer__social-link" aria-label="Instagram">📷</a>
+            <a href="#" class="footer__social-link" aria-label="YouTube">🎬</a>
+          </div>
+        </div>
+
+        <div class="footer__links">
+          <h4 class="footer__links-title">Cursos</h4>
+          <ul class="footer__links-list">
+            <li><a href="#">HTML5 Básico</a></li>
+            <li><a href="#">CSS3 Moderno</a></li>
+            <li><a href="#">JavaScript</a></li>
+            <li><a href="#">React</a></li>
+            <li><a href="#">Node.js</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__links">
+          <h4 class="footer__links-title">Recursos</h4>
+          <ul class="footer__links-list">
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Tutoriales</a></li>
+            <li><a href="#">Documentación</a></li>
+            <li><a href="#">Comunidad</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__links">
+          <h4 class="footer__links-title">Empresa</h4>
+          <ul class="footer__links-list">
+            <li><a href="#">Sobre nosotros</a></li>
+            <li><a href="#">Carreras</a></li>
+            <li><a href="#">Privacidad</a></li>
+            <li><a href="#">Términos</a></li>
+            <li><a href="#">Contacto</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copyright">
+          © 2025 EduLearn. Todos los derechos reservados.
+        </p>
+        <p class="footer__made">
+          Hecho con ❤️ para estudiantes de todo el mundo
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal para detalles del curso (para práctica de JS) -->
+  <div class="modal" id="courseModal">
+    <div class="modal__overlay"></div>
+    <div class="modal__content">
+      <button class="modal__close" aria-label="Cerrar modal">×</button>
+      <div class="modal__body">
+        <!-- Contenido dinámico del curso -->
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
+
+</body></html>
