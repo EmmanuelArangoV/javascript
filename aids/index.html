@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPA Kit Examen JS</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Fuente Google Fonts: Poppins (Moderna y limpia) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- =========================================
+     COMPONENT 1: NAVBAR (RESPONSIVE)
+     ========================================= -->
+<header class="main-header">
+    <nav class="navbar">
+        <div class="logo">MiLogo</div>
+
+        <!-- Botón Hamburguesa (Tu JS debe escuchar el click aquí) -->
+        <button class="hamburger-btn" id="nav-toggle" aria-label="Abrir menú">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+
+        <!-- Menú de navegación (Tu JS debe añadir/quitar la clase 'active') -->
+        <ul class="nav-menu" id="nav-menu">
+            <li class="nav-item"><a href="#cards" class="nav-link">Tarjetas</a></li>
+            <li class="nav-item"><a href="#accordion" class="nav-link">Acordeón</a></li>
+            <li class="nav-item"><a href="#gallery" class="nav-link">Galería</a></li>
+            <li class="nav-item"><a href="#contact" class="nav-link">Contacto</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="container">
+
+    <!-- =========================================
+         COMPONENT 2: CARDS (TARJETAS)
+         ========================================= -->
+    <section id="cards" class="section">
+        <h2 class="section-title">Nuestras Tarjetas</h2>
+        <div class="cards-grid">
+
+            <!-- Card 1 -->
+            <article class="card">
+                <div class="card-header">
+                    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Imagen Codigo" class="card-img">
+                </div>
+                <div class="card-body">
+                    <span class="tag tag-blue">Tecnología</span>
+                    <h3>Desarrollo Frontend</h3>
+                    <p>Aprende a construir interfaces modernas y responsivas utilizando las últimas tecnologías web.</p>
+                    <!-- Tu JS puede capturar clicks en este botón -->
+                    <button class="btn btn-primary card-btn" data-id="1">Leer Más</button>
+                </div>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="card">
+                <div class="card-header">
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Imagen Diseño" class="card-img">
+                </div>
+                <div class="card-body">
+                    <span class="tag tag-purple">Diseño</span>
+                    <h3>UI/UX Design</h3>
+                    <p>Diseña experiencias de usuario que cautiven y resuelvan problemas reales de forma elegante.</p>
+                    <button class="btn btn-primary card-btn" data-id="2">Leer Más</button>
+                </div>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="card">
+                <div class="card-header">
+                    <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Imagen Backend" class="card-img">
+                </div>
+                <div class="card-body">
+                    <span class="tag tag-green">Backend</span>
+                    <h3>Servidores y APIs</h3>
+                    <p>Domina la lógica del lado del servidor y conecta tus aplicaciones con bases de datos robustas.</p>
+                    <button class="btn btn-primary card-btn" data-id="3">Leer Más</button>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- =========================================
+         COMPONENT 3: ACCORDION (ACORDEÓN)
+         ========================================= -->
+    <section id="accordion" class="section">
+        <h2 class="section-title">Preguntas Frecuentes</h2>
+        <div class="accordion-container">
+
+            <!-- Item 1 (Tu JS debe escuchar el click en .accordion-header) -->
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    ¿Cómo funciona este acordeón?
+                    <span class="icon">+</span>
+                </button>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        Este contenido está oculto por defecto. Tu tarea con JS es cambiar la altura (height) o la visibilidad cuando se hace click en el header.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    ¿Puedo usar esto en mi examen?
+                    <span class="icon">+</span>
+                </button>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        ¡Claro que sí! La estructura está lista para que te enfoques 100% en la lógica de programación.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    ¿Qué propiedades CSS debo manipular?
+                    <span class="icon">+</span>
+                </button>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        Generalmente alternas una clase (ej: .active) que cambia el `max-height` de 0 a un valor en px.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- =========================================
+         COMPONENT 4: SLIDER/GALLERY (GALERÍA)
+         ========================================= -->
+    <section id="gallery" class="section">
+        <h2 class="section-title">Galería Interactiva</h2>
+
+        <div class="carousel">
+            <!-- Botón Previo (Tu JS escucha aquí) -->
+            <button class="carousel-btn btn-prev" id="prev-btn">&#10094;</button>
+
+            <div class="carousel-track-container">
+                <ul class="carousel-track">
+                    <!-- Slide 1 (Clase current-slide para el visible inicial) -->
+                    <li class="carousel-slide current-slide">
+                        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Paisaje 1">
+                        <div class="caption">Montañas Nevadas</div>
+                    </li>
+                    <!-- Slide 2 -->
+                    <li class="carousel-slide">
+                        <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Paisaje 2">
+                        <div class="caption">Atardecer en el Valle</div>
+                    </li>
+                    <!-- Slide 3 -->
+                    <li class="carousel-slide">
+                        <img src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Paisaje 3">
+                        <div class="caption">Bosque Místico</div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Botón Siguiente (Tu JS escucha aquí) -->
+            <button class="carousel-btn btn-next" id="next-btn">&#10095;</button>
+        </div>
+
+        <!-- Indicadores (Puntos opcionales para JS extra) -->
+        <div class="carousel-nav">
+            <button class="carousel-indicator current-slide"></button>
+            <button class="carousel-indicator"></button>
+            <button class="carousel-indicator"></button>
+        </div>
+    </section>
+
+    <!-- =========================================
+         COMPONENT 5: FORM (CONTACTO)
+         ========================================= -->
+    <section id="contact" class="section">
+        <h2 class="section-title">Contáctanos</h2>
+        <div class="form-wrapper">
+            <!-- Tu JS debe escuchar el evento 'submit' de este form -->
+            <form id="contact-form" class="contact-form">
+
+                <div class="form-group">
+                    <label for="name">Nombre Completo</label>
+                    <input type="text" id="name" name="name" placeholder="Ej: Juan Pérez" required>
+                    <span class="error-msg" id="name-error">El nombre es requerido</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Correo Electrónico</label>
+                    <input type="email" id="email" name="email" placeholder="Ej: juan@mail.com" required>
+                    <span class="error-msg" id="email-error">Email inválido</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Mensaje</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Escribe tu mensaje aquí..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-block">Enviar Mensaje</button>
+
+                <!-- Mensaje de éxito oculto por defecto -->
+                <div class="success-msg" id="form-success" style="display: none;">
+                    ¡Mensaje enviado con éxito!
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- =========================================
+     COMPONENT 6: TODO LIST (LISTA DE TAREAS)
+     ========================================= -->
+    <section id="tasks" class="section">
+        <h2 class="section-title">Mis Tareas</h2>
+
+        <div class="todo-wrapper">
+
+            <!-- Input para agregar tarea -->
+            <div class="todo-input-group">
+                <input type="text" id="todo-input" placeholder="¿Qué tienes pendiente hoy?">
+                <button id="add-btn" class="btn btn-primary">
+                    <span class="plus-icon">+</span>
+                </button>
+            </div>
+
+            <!-- Filtros (Opcional, para que tu JS filtre la lista) -->
+            <div class="todo-filters">
+                <button class="filter-btn active" data-filter="all">Todas</button>
+                <button class="filter-btn" data-filter="pending">Pendientes</button>
+                <button class="filter-btn" data-filter="completed">Completadas</button>
+            </div>
+
+            <!-- Lista de tareas -->
+            <ul class="todo-list" id="todo-list">
+
+                <!-- EJEMPLO 1: Tarea Pendiente -->
+                <li class="todo-item">
+                    <span class="todo-text">Preparar la estructura HTML</span>
+                    <div class="todo-actions">
+                        <!-- Tu JS debe escuchar click aquí para marcar como completado -->
+                        <button class="action-btn check-btn" aria-label="Completar">✓</button>
+                        <!-- Tu JS debe escuchar click aquí para eliminar -->
+                        <button class="action-btn delete-btn" aria-label="Eliminar">🗑️</button>
+                    </div>
+                </li>
+
+                <!-- EJEMPLO 2: Tarea Completada (Nota la clase 'completed') -->
+                <li class="todo-item completed">
+                    <span class="todo-text">Diseñar los estilos CSS</span>
+                    <div class="todo-actions">
+                        <button class="action-btn check-btn" aria-label="Desmarcar">✓</button>
+                        <button class="action-btn delete-btn" aria-label="Eliminar">🗑️</button>
+                    </div>
+                </li>
+
+            </ul>
+
+            <!-- Mensaje si no hay tareas (Tu JS puede mostrar/ocultar esto) -->
+            <p class="empty-message" style="display:none;">No tienes tareas pendientes.</p>
+
+            <!-- Contador (Para darle vida con JS) -->
+            <div class="todo-footer">
+                <span>Tienes <b id="pending-count">1</b> tarea pendiente</span>
+                <button id="clear-btn" class="clear-btn">Borrar completadas</button>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- Vincula tu archivo JS aquí -->
+<script src="script.js"></script>
+</body>
+</html>
