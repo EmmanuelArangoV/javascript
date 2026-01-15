@@ -2,7 +2,69 @@ document.addEventListener('DOMContentLoaded', () => {
     initNavigation();
     modalCards();
     accordion();
+    carousel();
+    form();
 });
+
+function form() {
+    const form = document.getElementById('contact-form');
+    const successMessage = document.getElementById('form-success');
+
+    form.addEventListener('submit' , (e) => {
+        e.preventDefault();
+        form.reset();
+        successMessage.style.display = 'block';
+        setTimeout(() => {
+            successMessage.style.display = 'none';
+        }, 3000);
+    });
+}
+
+function carousel() {
+    const images = document.querySelectorAll('.carousel-slide');
+    const indicators = document.querySelectorAll('.carousel-indicator');
+    const prevButton = document.getElementById('prev-btn');
+    const nextButton = document.getElementById('next-btn');
+    let currentIndex = 0;
+    let isPaused = false;
+
+    function showImage(index) {
+        images.forEach(img => img.classList.remove('current-slide'));
+        indicators.forEach(ind => ind.classList.remove('current-slide'));
+        indicators[index].classList.add('current-slide');
+        images[index].classList.add('current-slide');
+    }
+
+    indicators.forEach((ind, index) => {
+        ind.addEventListener('click', () => {
+            currentIndex = index;
+            showImage(currentIndex);
+        });
+    });
+
+    prevButton.addEventListener('click', () => {
+        currentIndex = (currentIndex === 0) ? currentIndex = images.length - 1 : currentIndex - 1;
+        showImage(currentIndex);
+    });
+
+    nextButton.addEventListener('click', () => {
+        currentIndex = (currentIndex === images.length - 1) ? currentIndex = 0 : currentIndex + 1;
+        showImage(currentIndex);
+    });
+
+    setInterval(() => {
+        if (!isPaused) {
+            currentIndex = (currentIndex === images.length - 1) ? 0 : currentIndex + 1;
+            showImage(currentIndex);
+        }
+    }, 3000);
+
+    images.forEach(img => {
+        img.addEventListener('click', () => {
+            isPaused = !isPaused;
+        });
+    });
+}
 
 function accordion() {
     
