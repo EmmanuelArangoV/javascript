@@ -15,7 +15,7 @@
      ========================================= -->
 <header class="main-header">
     <nav class="navbar">
-        <div class="logo">MiLogo</div>
+        <div id="logo" class="logo"><a href="#hero" aria-label="Ir al inicio">MiLogo</a></div>
 
         <!-- Botón Hamburguesa (Tu JS debe escuchar el click aquí) -->
         <button class="hamburger-btn" id="nav-toggle" aria-label="Abrir menú">
@@ -36,6 +36,11 @@
 
 <main class="container">
 
+    <section id="hero" class="hero-section">
+        <h1>Bienvenido a la SPA Kit de Examen JS</h1>
+        <p>Esta plantilla contiene varios componentes interactivos para que puedas demostrar tus habilidades en JavaScript. ¡Buena suerte!</p>
+    </section>
+
     <!-- =========================================
          COMPONENT 2: CARDS (TARJETAS)
          ========================================= -->
@@ -53,6 +58,10 @@
                     <h3>Desarrollo Frontend</h3>
                     <p>Aprende a construir interfaces modernas y responsivas utilizando las últimas tecnologías web.</p>
                     <!-- Tu JS puede capturar clicks en este botón -->
+                    <div class="modal-only">
+                        <h4>$30</h4>
+                        <p>Duración: 3 Meses</p>
+                    </div>
                     <button class="btn btn-primary card-btn" data-id="1">Leer Más</button>
                 </div>
             </article>
@@ -66,6 +75,10 @@
                     <span class="tag tag-purple">Diseño</span>
                     <h3>UI/UX Design</h3>
                     <p>Diseña experiencias de usuario que cautiven y resuelvan problemas reales de forma elegante.</p>
+                    <div class="modal-only">
+                        <h4>$30</h4>
+                        <p>Duración: 3 Meses</p>
+                    </div>
                     <button class="btn btn-primary card-btn" data-id="2">Leer Más</button>
                 </div>
             </article>
@@ -79,10 +92,13 @@
                     <span class="tag tag-green">Backend</span>
                     <h3>Servidores y APIs</h3>
                     <p>Domina la lógica del lado del servidor y conecta tus aplicaciones con bases de datos robustas.</p>
+                    <div class="modal-only">
+                        <h4>$30</h4>
+                        <p>Duración: 3 Meses</p>
+                    </div>
                     <button class="btn btn-primary card-btn" data-id="3">Leer Más</button>
                 </div>
             </article>
-
         </div>
     </section>
 
