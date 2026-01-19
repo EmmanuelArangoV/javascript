@@ -14,7 +14,7 @@ export function Cards() {
             title: 'Servidores y APIs', color: 'green', tag: 'Backend', description: 'Domina la lógica del lado del servidor y conecta tus aplicaciones con bases de datos robustas.', price: '$30', duration: '3 Meses', imgSrc: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80'
         }
     ]
-    
+
     section.innerHTML = `
     <h2 class="section-title">Nuestras Tarjetas</h2>
     <div class="cards-grid">

@@ -24,7 +24,23 @@ export function Navbar() {
     </nav>
     `;
 
-    // Lógica para el botón hamburguesa
+    setUpMenu(header);
 
     return header;
+}
+
+function setUpMenu(header) {
+    const navToggle = header.querySelector('#nav-toggle');
+    const navMenu = header.querySelector('#nav-menu');
+    const navLinks = header.querySelectorAll('.nav-link');
+
+    navToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+    });
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+        });
+    });
 }

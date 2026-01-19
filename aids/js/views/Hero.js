@@ -1,6 +1,6 @@
 export function Hero() {
     const section = document.createElement('section');
-    section.classList.add('hero-section');
+    section.classList.add('hero');
     section.id = 'hero';
     section.innerHTML = `
         <h1>Bienvenido a la SPA Kit de Examen JS</h1>
