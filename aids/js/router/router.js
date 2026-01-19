@@ -26,8 +26,7 @@ export function router() {
     const viewRenderFunction = routes[hash];
 
     if (viewRenderFunction) {
-        const viewContent = viewRenderFunction();
-        render(viewContent);
+        render(viewRenderFunction());
     } else {
         console.error('Ruta no encontrada:', hash);
         render(`<div class="section"><h1>Error 404: Página no encontrada</h1></div>`);

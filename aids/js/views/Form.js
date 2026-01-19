@@ -1,4 +1,4 @@
-import { user } from '../state/store.js';
+import { store } from '../state/store.js';
 import { UserCard } from '../components/UserCard.js';
 
 export function Form() {
@@ -42,7 +42,7 @@ export function Form() {
         
     `;
 
-    setUpForm(section); // Función corregida
+    setUpForm(section);
 
     return section;
 }
@@ -52,7 +52,7 @@ function setUpForm(sectionContext) {
     const successMessage = sectionContext.querySelector('#form-success');
     const usersContainer = sectionContext.querySelector('#all-users');
 
-    user.info.forEach(u => {
+    store.users.forEach(u => {
         usersContainer.appendChild(UserCard(u));
     });
 
@@ -67,7 +67,7 @@ function setUpForm(sectionContext) {
 
         // A. Guardar en Store (Array actual + nuevo)
         // Usamos spread operator (...) para copiar lo que ya había
-        user.set([...user.info, newUserCtx]);
+        store.setUser([...store.users, newUserCtx]);
 
         usersContainer.appendChild(UserCard(newUserCtx));
 

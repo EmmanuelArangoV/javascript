@@ -1,4 +1,3 @@
-// Dame una card para usuario que muestre nombre e email
 export function UserCard({ name, email }) {
     const card = document.createElement('div');
     card.className = 'user-card';

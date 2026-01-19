@@ -1,19 +1,9 @@
+import { cardData } from "../state/store.js";
+
 export function Cards() {
     const section = document.createElement('section');
     section.classList.add('section');
     section.id = 'cards';
-
-    const cardData = [
-        {
-            title: 'Desarrollo Frontend', color: 'blue', tag: 'Tecnología', description: 'Aprende a construir interfaces modernas y responsivas utilizando las últimas tecnologías web.', price: '$30', duration: '3 Meses', imgSrc: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80'
-        },
-        {
-            title: 'UI/UX Design', color: 'purple',tag: 'Diseño', description: 'Diseña experiencias de usuario que cautiven y resuelvan problemas reales de forma elegante.', price: '$30', duration: '3 Meses', imgSrc: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80'
-        },
-        {
-            title: 'Servidores y APIs', color: 'green', tag: 'Backend', description: 'Domina la lógica del lado del servidor y conecta tus aplicaciones con bases de datos robustas.', price: '$30', duration: '3 Meses', imgSrc: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80'
-        }
-    ]
 
     section.innerHTML = `
     <h2 class="section-title">Nuestras Tarjetas</h2>
@@ -45,7 +35,7 @@ export function Cards() {
 }
 
 function setUpModalCards(sectionContext) {
-
+    // Definimos el HTML del modal
     const modalHTML = `
         <div id="global-modal" class="modal-overlay">
             <div class="modal-popup">
@@ -64,15 +54,15 @@ function setUpModalCards(sectionContext) {
         </div>
     `;
 
-    document.body.insertAdjacentHTML('beforeend', modalHTML);
+    sectionContext.insertAdjacentHTML('beforeend', modalHTML);
 
-    const modal = document.getElementById('global-modal');
-    const closeModalBtn = document.getElementById('close-modal');
-    const modalImg = document.getElementById('modal-img');
-    const modalTitle = document.getElementById('modal-title');
-    const modalText = document.getElementById('modal-text');
-    const modalPrice = document.getElementById('modal-price');
-    const modalDuration = document.getElementById('modal-duration');
+    const modal = sectionContext.querySelector('#global-modal');
+    const closeModalBtn = sectionContext.querySelector('#close-modal');
+    const modalImg = sectionContext.querySelector('#modal-img');
+    const modalTitle = sectionContext.querySelector('#modal-title');
+    const modalText = sectionContext.querySelector('#modal-text');
+    const modalPrice = sectionContext.querySelector('#modal-price');
+    const modalDuration = sectionContext.querySelector('#modal-duration');
 
     const cardsButtons = sectionContext.querySelectorAll('.card-btn');
 

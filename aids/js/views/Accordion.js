@@ -1,24 +1,9 @@
+import {accordionData} from "../state/store.js";
+
 export function Accordion() {
     const section = document.createElement('section');
     section.id = 'accordion';
     section.classList.add('section');
-
-    // "Base de datos" local con la información
-    const accordionData = [
-        {
-            header: "¿Cómo funciona este acordeón?",
-            body: "Este contenido está oculto por defecto. Tu tarea con JS es cambiar la altura (height) o la visibilidad cuando se hace click en el header."
-        },
-        {
-            header: "¿Puedo usar esto en mi examen?",
-            body: "¡Claro que sí! La estructura está lista para que te enfoques 100% en la lógica de programación."
-        },
-        {
-            header: "¿Qué propiedades CSS debo manipular?",
-            body: "Generalmente alternas una clase (ej: .active) que cambia el `max-height` de 0 a un valor en px."
-        }
-    ];
-
 
     section.innerHTML = `
         <h2 class="section-title">Preguntas Frecuentes</h2>
