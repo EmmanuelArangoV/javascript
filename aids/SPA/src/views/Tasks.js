@@ -1,4 +1,4 @@
-import { TaskCard } from "../components/TaskCard.js"; // Asegúrate de la extensión .js
+import { TaskCard } from "../components/TaskCard.js"; // Asegúrate de la extensión .SPA
 import { store } from "../state/store.js";
 
 export function Tasks() {
