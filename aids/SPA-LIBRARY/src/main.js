@@ -7,10 +7,16 @@ import { notFoundView} from "./views/notFound.js";
 import { Footer} from "./components/Footer.js";
 
 const app = document.getElementById('app');
-app.appendChild(Navbar())
-//app.appendChild(registerView());
-// app.appendChild(loginView());
-//app.appendChild(dashboardView());
-//app.appendChild(createBookView());
-app.appendChild(notFoundView());
-app.appendChild(Footer());
+
+export function render(viewNode) {
+    app.innerHTML = '';
+
+    app.appendChild(Navbar());
+
+    const main = document.createElement('main');
+    main.classList.add('container');
+    main.appendChild(viewNode);
+    app.appendChild(main);
+
+    app.appendChild(Footer());
+}

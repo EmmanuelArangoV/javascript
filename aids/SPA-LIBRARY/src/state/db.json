@@ -1,0 +1,18 @@
+{
+  "users": [
+    { "id": 1, "name": "Admin", "email":  "admin@lib.com", "password":  "admin123", "role": "librarian"},
+    { "id": 2, "name": "Visitor", "email": "visitor@lib.com", "password": "visitor123", "role": "visitor"}
+  ],
+
+  "books": [
+    { "ISBN": 1, "title": "Clean Code", "author": "Robert C. Martin", "availableCopies": 3, "cover": "🧑🏽‍💻", "category": "Programming", "description": "A Handbook of Agile Software Craftsmanship" },
+    { "ISBN": 2, "title": "Harry Potter and the Sorcerer's Stone", "author": "J.K. Rowling", "availableCopies": 5, "cover": "⚡️", "category": "Fantasy", "description": "The first book in the Harry Potter series." },
+    { "ISBN": 3, "title": "The Lord of the Rings", "author": "J.R.R. Tolkien", "availableCopies": 2, "cover": "🧙‍♂️", "category": "Fantasy", "description": "An epic high-fantasy novel." }
+  ],
+
+  "loans": [
+    { "loanId": 1, "userId": 2, "ISBN": 1, "loanDate": "2024-01-15" },
+    { "loanId": 2, "userId": 2, "ISBN": 2, "loanDate": "2024-01-20"}
+  ]
+}
+
