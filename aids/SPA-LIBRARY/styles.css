@@ -1,0 +1,628 @@
+/* ===== Reset básico y tipografía global ===== */
+:root {
+    --color-bg: #0b1526;
+    --color-bg-alt: #101c33;
+    --color-primary: #1e88e5; /* Azul sólido */
+    --color-primary-dark: #1565c0; /* Azul más oscuro para hover */
+    --color-text: #ffffff;
+    --color-text-muted: #cfd8dc;
+    --color-border: rgba(255, 255, 255, 0.15); /* Borde un poco más visible */
+    --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.25); /* Sombra más sutil */
+    --radius-pill: 999px;
+    --radius-md: 6px; /* Bordes un poco menos redondeados para un look más serio */
+    --transition-fast: 0.2s ease;
+    --navbar-height: 64px;
+}
+
+/* Regla IMPORTANTE para controlar visibilidad */
+[hidden] {
+    display: none !important;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+}
+
+/* ===== Header principal ===== */
+.main-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: rgba(11, 21, 38, 0.95); /* Fondo sólido semi-transparente */
+    border-bottom: 1px solid var(--color-border); /* Borde simple en lugar de sombra fuerte */
+    backdrop-filter: blur(8px);
+}
+
+/* ===== Navbar base ===== */
+.navbar {
+    max-width: 1200px;
+    margin: 0 auto;
+    height: var(--navbar-height);
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+}
+
+.navbar__brand {
+    display: flex;
+    align-items: center;
+}
+
+.navbar__logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+    color: var(--color-text);
+    font-weight: 600;
+}
+
+.navbar__logo-icon { font-size: 1.4rem; }
+.navbar__logo-text { font-size: 1.05rem; }
+
+/* ===== Toggle (mobile) ===== */
+.navbar__toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-text-muted);
+    background: transparent;
+    cursor: pointer;
+}
+
+.navbar__toggle-bar {
+    width: 18px;
+    height: 2px;
+    background-color: var(--color-text);
+}
+
+/* ===== Menú container ===== */
+.navbar__menu-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1.75rem;
+}
+
+/* ===== Links ===== */
+.navbar__menu {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.navbar__link {
+    position: relative;
+    text-decoration: none;
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    padding-bottom: 0.15rem;
+    transition: color var(--transition-fast);
+}
+
+.navbar__link:hover {
+    color: var(--color-text);
+}
+
+/* Subrayado simple sólido */
+.navbar__link::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -0.1rem;
+    width: 0; height: 2px;
+    background-color: var(--color-primary); /* Color sólido */
+    transition: width var(--transition-fast);
+}
+
+.navbar__link:hover::after {
+    width: 100%;
+}
+
+/* ===== Botones y Acciones ===== */
+.navbar__actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.navbar__button {
+    border-radius: var(--radius-pill); /* Mantenemos pastilla, es estándar moderno */
+    border: 1px solid transparent; /* Reserva espacio para borde */
+    padding: 0.4rem 1.2rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+/* Botón Primario: Simplificado (Color plano, sin sombras brillantes) */
+.navbar__button--primary {
+    background-color: var(--color-primary);
+    color: #ffffff;
+}
+
+.navbar__button--primary:hover {
+    background-color: var(--color-primary-dark);
+}
+
+/* Botón Outline: Simplificado */
+.navbar__button--outline {
+    background: transparent;
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+}
+
+.navbar__button--outline:hover {
+    background-color: rgba(255, 255, 255, 0.05); /* Leve iluminación de fondo */
+    border-color: var(--color-text);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .navbar { min-height: var(--navbar-height); padding: 0.75rem 1rem; }
+    .navbar__toggle { display: flex; }
+
+    .navbar__menu-container {
+        display: none;
+        position: absolute;
+        top: calc(var(--navbar-height) + 10px);
+        right: 1rem; left: 1rem;
+        padding: 1.5rem;
+        background-color: var(--color-bg-alt); /* Fondo plano sólido */
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-soft);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1.5rem;
+    }
+
+    .navbar__menu-container.active { display: flex; }
+
+    .navbar__menu {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .navbar__actions {
+        width: 100%;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+}
+
+/* ===== Autenticación / Formularios (Simplificado) ===== */
+.auth-container {
+    min-height: calc(100vh - var(--navbar-height));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    /* Fondo radial sutil */
+    background: radial-gradient(circle at center, #13223f 0%, var(--color-bg) 100%);
+}
+
+.auth-card {
+    background-color: var(--color-bg-alt); /* Fondo plano */
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: var(--shadow-soft);
+}
+
+.auth-card__header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.auth-card__title {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+}
+
+.auth-card__subtitle {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.form-row { display: flex; gap: 1rem; }
+.form-row .form-group { flex: 1; }
+
+.form-label {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+}
+
+/* Inputs simplificados */
+.form-input {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: rgba(0, 0, 0, 0.2); /* Fondo oscuro simple */
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    color: var(--color-text);
+    font-family: inherit;
+    font-size: 0.95rem;
+    transition: border-color 0.2s;
+}
+
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.form-select option {
+    background-color: var(--color-bg-alt);
+    color: var(--color-text);
+}
+
+.btn-block {
+    width: 100%;
+    margin-top: 0.5rem;
+    padding: 0.75rem;
+}
+
+.auth-card__footer {
+    margin-top: 1.5rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+}
+
+.text-link {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+.text-link:hover {
+    text-decoration: underline;
+}
+
+/* Animación sutil de entrada */
+.animate-fade-in {
+    animation: simpleFade 0.3s ease-out forwards;
+}
+
+@keyframes simpleFade {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Dashboard Layout ===== */
+.dashboard-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+
+.dashboard-header {
+    margin-bottom: 2.5rem;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 1.5rem;
+}
+
+.dashboard-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.dashboard-subtitle {
+    color: var(--color-text-muted);
+    margin-top: 0.25rem;
+}
+
+/* ===== Stats Grid ===== */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.stat-card {
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    transition: transform var(--transition-fast);
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-text-muted);
+}
+
+.stat-icon {
+    font-size: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.stat-info h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.stat-info p {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+}
+
+/* ===== Catalog Controls ===== */
+.catalog-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.search-wrapper {
+    flex: 1;
+    max-width: 400px;
+}
+
+/* ===== Books Grid ===== */
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 2rem;
+}
+
+.book-card {
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: border-color var(--transition-fast);
+}
+
+.book-card:hover {
+    border-color: var(--color-primary);
+}
+
+.book-cover {
+    height: 160px;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.book-info {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.book-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    line-height: 1.3;
+}
+
+.book-author {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+}
+
+.book-actions {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Badges y Botones pequeños */
+.badge-status {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-pill);
+    background-color: #1b5e20;
+    color: #a5d6a7;
+    border: 1px solid #2e7d32;
+}
+
+.btn-sm {
+    padding: 0.3rem 0.8rem;
+    font-size: 0.8rem;
+}
+
+@media (max-width: 600px) {
+    .catalog-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-wrapper {
+        max-width: 100%;
+    }
+}
+
+/* ===== Estilos para Vistas de Contenido (Create/Edit) ===== */
+
+/* Tarjeta contenedora amplia (diferente a la de login que es angosta) */
+.content-card {
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 2rem;
+    max-width: 800px; /* Ancho máximo para que no se estire demasiado */
+    margin: 0 auto;   /* Centrado horizontal */
+}
+
+/* Estilo específico para Textarea */
+.form-textarea {
+    resize: vertical; /* Permite redimensionar solo verticalmente */
+    min-height: 100px;
+}
+
+/* Contenedor de botones del formulario */
+.form-actions {
+    display: flex;
+    justify-content: flex-end; /* Botones a la derecha */
+    gap: 1rem;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border);
+}
+
+/* Ajuste Responsive para formularios */
+@media (max-width: 768px) {
+    .mobile-stack {
+        flex-direction: column; /* Apila los inputs uno sobre otro en móviles */
+        gap: 1.25rem;
+    }
+
+    .form-actions {
+        flex-direction: column-reverse; /* Guarda arriba, cancela abajo */
+    }
+
+    .form-actions button,
+    .form-actions a {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* ===== Footer Styling ===== */
+.main-footer {
+    background-color: var(--color-bg-alt);
+    border-top: 1px solid var(--color-border);
+    padding: 3rem 1.5rem;
+    margin-top: auto; /* Empuja el footer al final si usas flex-column en el body */
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    text-align: center;
+}
+
+/* Marca */
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-text);
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.footer-icon {
+    font-size: 1.5rem;
+}
+
+/* Texto Copyright */
+.footer-copy p {
+    margin: 0;
+    color: var(--color-text-muted);
+}
+
+.footer-copy small {
+    display: block;
+    margin-top: 0.25rem;
+    color: var(--color-text-muted);
+    opacity: 0.7;
+}
+
+/* Navegación Footer */
+.footer-nav {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.footer-link {
+    color: var(--color-text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color var(--transition-fast);
+}
+
+.footer-link:hover {
+    color: var(--color-primary);
+}
+
+/* Responsive: En pantallas grandes, alinea horizontalmente */
+@media (min-width: 768px) {
+    .footer-container {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+
+    .footer-nav {
+        justify-content: flex-end;
+    }
+}
+
