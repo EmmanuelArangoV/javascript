@@ -28,7 +28,7 @@ export function Navbar() {
                         <a href="#catalog" class="navbar__link">Catálogo</a>
                     </li>
                     <li class="navbar__item">
-                        <a href="#my-reservations" class="navbar__link">Reservas</a>
+                        <a href="#loans" class="navbar__link">Reservas</a>
                     </li>
                 </ul>
 

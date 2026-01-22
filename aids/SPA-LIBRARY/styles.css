@@ -420,62 +420,94 @@ body {
 }
 
 /* ===== Books Grid ===== */
-.books-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 2rem;
-}
-
 .book-card {
     background-color: var(--color-bg-alt);
-    border: 1px solid var(--color-border);
+    border:1px solid var(--color-border);
     border-radius: var(--radius-md);
     overflow: hidden;
     display: flex;
     flex-direction: column;
     transition: border-color var(--transition-fast);
+    width: auto;
 }
 
-.book-card:hover {
-    border-color: var(--color-primary);
-}
+.book-card:hover { border-color: var(--color-primary); }
 
 .book-cover {
-    height: 160px;
-    background-color: rgba(0, 0, 0, 0.2);
+    height:160px;
+    background-color: rgba(0,0,0,0.2);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 4rem;
-    border-bottom: 1px solid var(--color-border);
+    font-size:4rem;
+    border-bottom:1px solid var(--color-border);
 }
 
 .book-info {
-    padding: 1.25rem;
+    padding:1.15rem;
     display: flex;
     flex-direction: column;
-    flex: 1;
+    flex:1;
 }
 
 .book-title {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 0.25rem;
-    line-height: 1.3;
+    font-size:1.05rem;
+    font-weight:600;
+    margin-bottom:0.25rem;
+    line-height:1.3;
 }
 
 .book-author {
-    font-size: 0.9rem;
+    font-size:0.9rem;
     color: var(--color-text-muted);
-    margin-bottom: 1rem;
+    margin-bottom:0.85rem;
 }
 
 .book-actions {
     margin-top: auto;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: flex-start;
+    gap:0.6rem;
+    flex-wrap: nowrap;
 }
+
+.book-actions-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:0.45rem;
+    flex-wrap: nowrap;
+}
+
+.navbar__button.btn-sm,
+.btn-sm {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    font-size:0.8rem;
+    padding:0.3rem 0.75rem;
+}
+
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Increased from 250px */
+    gap: 1.25rem;
+}
+
+/* Allow wrap only on very small screens */
+@media (max-width:480px) {
+    .books-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
+    }
+    .book-actions,
+    .book-actions-buttons {
+        flex-wrap: wrap;
+        gap:0.5rem;
+    }
+}
+
 
 /* Badges y Botones pequeños */
 .badge-status {
@@ -645,4 +677,171 @@ body {
         justify-content: flex-end;
     }
 }
+
+/* ===== LOANS STYLES ===== */
+
+
+.loans-container {
+    max-width: 1200px;           /* same max as dashboard */
+    margin: 2rem auto;           /* page top/bottom margins */
+    padding: 0 1.5rem;           /* horizontal gutter consistent with layout */
+    box-sizing: border-box;
+}
+
+/* Card tweaks inside loans page to ensure proper spacing */
+.loans-container .card {
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-soft);
+    overflow: visible;
+}
+
+/* Card body spacing */
+.loans-container .card-body {
+    padding: 1.25rem 1.25rem 1.5rem;
+}
+
+/* Page title spacing */
+.loans-container h2 {
+    margin: 0 0 0.85rem 0;
+    font-size: 1.25rem;
+    font-weight: 600; /* keep card titles prominent */
+    color: var(--color-text);
+}
+
+/* Table wrapper - responsive overflow */
+.loans-container .table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 0.5rem;
+}
+
+/* Table base */
+.loans-container .table {
+    width: 100%;
+    border-collapse: collapse;
+    background: transparent;
+    min-width: 680px; /* avoid cramped columns on wide layouts */
+}
+
+/* Table header and row alignment - non-bold and vertically centered */
+.loans-container .table thead th,
+.loans-container .table tbody td {
+    font-weight: 400;               /* not bold */
+    vertical-align: middle;         /* center headers with content */
+    text-align: left;               /* align text left for readability */
+    padding: 0.75rem 0.9rem;        /* consistent padding */
+    color: var(--color-text);
+    white-space: nowrap;
+}
+
+/* Header background subtle separation */
+.loans-container .table thead th {
+    background-color: rgba(255,255,255,0.02);
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+/* Row divider */
+.loans-container .table tbody tr + tr td {
+    border-top: 1px solid rgba(255,255,255,0.03);
+}
+
+/* Cell content typography */
+.loans-container .table tbody td {
+    font-size: 0.95rem;
+    line-height: 1.25;
+    color: var(--color-text);
+}
+
+/* Ensure long titles wrap nicely but keep alignment */
+.loans-container .table tbody td:nth-child(2) {
+    max-width: 360px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Badge styles (status) */
+.loans-container .badge {
+    display: inline-block;
+    padding: 0.28em 0.6em;
+    font-size: 0.78rem;
+    border-radius: var(--radius-pill);
+    font-weight: 600;
+}
+
+/* Actions column: keep buttons compact and aligned */
+.loans-container .table tbody td:last-child {
+    width: 1%;
+    white-space: nowrap;
+}
+
+/* Use project's navbar button primary style for Devolver button */
+.loans-container .btn-return {
+    /* inherit base button look from .navbar__button and .btn-sm */
+    border-radius: var(--radius-pill);
+    padding: 0.35rem 0.8rem;
+    font-size: 0.8rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+}
+
+/* Make sure the primary button variant looks identical to book cards */
+.loans-container .btn-return.navbar__button--primary {
+    background-color: var(--color-primary);
+    color: #fff;
+    border: 1px solid transparent;
+    transition: background-color var(--transition-fast), border-color var(--transition-fast);
+}
+.loans-container .btn-return.navbar__button--primary:hover {
+    background-color: var(--color-primary-dark);
+}
+
+/* Small-button sizing consistent with .btn-sm */
+.loans-container .btn-sm {
+    padding: 0.28rem 0.7rem;
+    font-size: 0.8rem;
+}
+
+/* Empty state (centered) */
+.loans-container .loader,
+.loans-container .empty-state {
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-muted);
+}
+
+/* Mobile adjustments */
+@media (max-width: 880px) {
+    .loans-container {
+        padding: 1rem;
+        margin: 1rem auto;
+    }
+
+    .loans-container .table {
+        min-width: 560px;
+    }
+
+    .loans-container .table thead th,
+    .loans-container .table tbody td {
+        padding: 0.6rem 0.6rem;
+        font-size: 0.9rem;
+    }
+
+    .loans-container .btn-return {
+        padding: 0.28rem 0.6rem;
+    }
+}
+
+@media (max-width: 520px) {
+    /* allow table to scroll horizontally but keep card padding comfortable */
+    .loans-container .card-body { padding: 0.9rem; }
+}
+
 

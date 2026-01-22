@@ -4,12 +4,14 @@ import { dashboardView } from '../views/dashboard.js';
 import { createBookView } from '../views/createBook.js';
 import { notFoundView } from '../views/notFound.js';
 import { render } from "../main.js";
+import { LoansView } from "../views/loans.js";
 
 const routes = {
-    'login': loginView(),
-    'register': registerView(),
-    'dashboard': dashboardView(),
-    'create-book': createBookView()
+    'login': loginView,
+    'register': registerView,
+    'dashboard': dashboardView,
+    'create-book': createBookView,
+    'loans': LoansView
 };
 
 export function router() {
@@ -22,15 +24,12 @@ export function router() {
         window.location.hash = 'login';
     }
 
-    const viewRenderFunction = routes[hash];
+    const viewFactory = routes[hash];
 
-    app.innerHTML = '';
-
-    if (viewRenderFunction) {
-        render(viewRenderFunction);
+    if (viewFactory) {
+        render(viewFactory());
     } else {
         console.error('Ruta no encontrada:', hash);
         render(notFoundView());
     }
 }
-

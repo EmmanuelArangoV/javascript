@@ -16,8 +16,9 @@
   ],
 
   "loans": [
-    { "id": 1, "userId": 2, "ISBN": 1, "loanDate": "2024-01-15" },
-    { "id": 2, "userId": 2, "ISBN": 2, "loanDate": "2024-01-20"}
+    { "id": 1, "userId": 2, "ISBN": 1, "loanDate": "2024-01-15", "status": true },
+    { "id": 2, "userId": 2, "ISBN": 2, "loanDate": "2024-01-20", "status": false },
+    { "id": 3, "userId": 4, "ISBN": 2, "loanDate": "2024-01-20", "status": true }
   ]
 }
 
