@@ -1,3 +1,5 @@
+import { login } from '../services/authService.js'
+
 export function loginView() {
     const section = document.createElement('section');
     section.classList.add('auth-container');
@@ -35,6 +37,8 @@ export function loginView() {
                         required
                     >
                 </div>
+                
+                <p id="login-error" class="form-error" style="display:none;color:red;"></p>
 
                 <button type="submit" class="navbar__button navbar__button--primary btn-block">
                     Iniciar Sesión
@@ -47,5 +51,35 @@ export function loginView() {
         </div>
     `;
 
+    loginRequest(section);
+
     return section;
+}
+
+function loginRequest(ctx) {
+    const form = ctx.querySelector('#login-form');
+    const errorMsg = ctx.querySelector('#login-error');
+
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const email = form.email.value.trim().toLowerCase();
+        const password = form.password.value.trim();
+
+        try {
+            const result = await login(email, password);
+
+            if (!result.success) {
+                errorMsg.style.display = 'block';
+                errorMsg.textContent = result.error || 'Error al iniciar sesión. Por favor, verifica tus credenciales.';
+                return;
+            }
+
+            window.location.hash = '#dashboard';
+        } catch (error) {
+            errorMsg.style.display = 'block';
+            errorMsg.textContent = 'Error al iniciar sesión. Por favor, intenta de nuevo más tarde.';
+        }
+    })
+
 }

@@ -1,10 +1,9 @@
 import { Navbar } from "./components/Navbar.js";
-import { loginView } from "./views/login.js";
-import { registerView } from "./views/register.js";
-import { dashboardView } from "./views/dashboard.js";
-import { createBookView } from "./views/createBook.js";
-import { notFoundView} from "./views/notFound.js";
 import { Footer} from "./components/Footer.js";
+import {router} from "./router/router.js";
+import { initStore } from './state/store.js';
+
+initStore();
 
 const app = document.getElementById('app');
 
@@ -20,3 +19,6 @@ export function render(viewNode) {
 
     app.appendChild(Footer());
 }
+
+window.addEventListener('hashchange', router);
+window.addEventListener('load', router);

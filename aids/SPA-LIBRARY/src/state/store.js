@@ -22,6 +22,11 @@ export function getStore() {
     return state;
 }
 
+export function setUser(user) {
+    state.user = user;
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ user }));
+}
+
 export function logout() {
     state.user = null;
     state.books = [];
