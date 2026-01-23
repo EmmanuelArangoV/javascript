@@ -1,4 +1,6 @@
 import { LoanItem } from '../components/LoanItem.js';
+import { getLoans, getBookById } from "../services/apiService.js";
+import { getStore } from "../state/store.js";
 
 export function LoansView() {
     const section = document.createElement('section');
@@ -20,37 +22,77 @@ export function LoansView() {
         </div>
     `;
 
-    const loansData = [
-        { id: 'L-001', userName: 'María Pérez', bookTitle: 'JavaScript Moderno', date: '2025-01-10', status: 'Active', bookId: 'B-101' },
-        { id: 'L-002', userName: 'Carlos Gómez', bookTitle: 'Node.js en Producción', date: '2024-12-22', status: 'Returned', bookId: 'B-102' },
-        { id: 'L-003', userName: 'Lucía Torres', bookTitle: 'Aprendiendo React', date: '2025-01-05', status: 'Returned', bookId: 'B-103' },
-        { id: 'L-004', userName: 'Andrea Ruiz', bookTitle: 'CSS Avanzado', date: '2024-11-30', status: 'Active', bookId: 'B-104' }
-    ];
+    loansRequest(section).then(r =>
+    console.log('Préstamos cargados'));
 
-    renderLoansTable(loansData);
+    return section;
+}
 
-    function renderLoansTable(list) {
-        const container = section.querySelector('#loansContainer');
-        if (!container) return;
+async function loansRequest(section) {
+    const store = getStore();
+    const user = store.user;
+    const userId = user.role === 'librarian' ? null : user.id;
 
-        if (!list || list.length === 0) {
-            container.innerHTML = `
+    const container = section.querySelector('#loansContainer');
+    if (container) container.innerHTML = '<div class="loader"></div>';
+
+    try {
+        const loans = await getLoans(userId);
+        if (!Array.isArray(loans) || loans.length === 0) {
+            renderLoansTable([], section);
+            return;
+        }
+
+        const transformed = await Promise.all(loans.map(async (loan) => {
+            let bookTitle = 'Desconocido';
+            try {
+                const book = await getBookById(loan.bookId);
+                console.log(book);  
+                bookTitle = book?.title ?? book?.bookTitle ?? 'Desconocido';
+            } catch (err) {
+                console.error('Error obteniendo libro', loan.bookId, err);
+            }
+
+            return {
+                id: loan.id,
+                userId: String(loan.userId),
+                bookTitle: bookTitle,
+                loanDate: loan.loanDate,
+                status: loan.status ? 'Active' : 'Returned'
+            };
+        }));
+
+        renderLoansTable(transformed, section);
+    } catch (err) {
+        console.error('Error cargando préstamos', err);
+        if (container) container.innerHTML = `<div class="text-danger py-3">No se pudieron cargar los préstamos</div>`;
+    }
+}
+
+
+function renderLoansTable(list, section) {
+    const container = section.querySelector('#loansContainer');
+    if (!container) return;
+
+    if (!list || list.length === 0) {
+        container.innerHTML = `
                 <div class="text-center py-5">
                     <i class="bi bi-inbox" style="font-size: 3rem; color: #ccc;"></i>
                     <p class="text-muted mt-3">No hay préstamos</p>
                 </div>
             `;
-            return;
-        }
+        return;
+    }
 
-        const tableWrapper = document.createElement('div');
-        tableWrapper.className = 'table-responsive';
-        const table = document.createElement('table');
-        table.className = 'table table-hover';
-        table.innerHTML = `
+    const tableWrapper = document.createElement('div');
+    tableWrapper.className = 'table-responsive';
+    const table = document.createElement('table');
+    table.className = 'table table-hover';
+    table.innerHTML = `
             <thead class="table-light">
                 <tr>
-                    <th>Usuario</th>
+                    <th>Préstamo id</th>
+                    <th>Usuario id</th>
                     <th>Libro</th>
                     <th>Fecha</th>
                     <th>Estado</th>
@@ -59,18 +101,15 @@ export function LoansView() {
             </thead>
             <tbody></tbody>
         `;
-        tableWrapper.appendChild(table);
+    tableWrapper.appendChild(table);
 
-        const tbody = table.querySelector('tbody');
-        list.forEach(loan => {
-            const row = LoanItem(loan);
-            tbody.appendChild(row);
-        });
+    const tbody = table.querySelector('tbody');
+    list.forEach(loan => {
+        const row = LoanItem(loan);
+        tbody.appendChild(row);
+    });
 
-        container.innerHTML = '';
-        container.appendChild(tableWrapper);
-    }
-
-    return section;
+    container.innerHTML = '';
+    container.appendChild(tableWrapper);
 }
 

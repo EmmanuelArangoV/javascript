@@ -11,6 +11,11 @@ export function registerView() {
 
             <form id="register-form" class="auth-form">
                 <div class="form-group">
+                    <label for="id" class="form-label">Tu numero de Id</label>
+                    <input type="text" id="id" name="id" class="form-input" placeholder="Tu Id" required>
+                </div>
+            
+                <div class="form-group">
                     <label for="fullName" class="form-label">Nombre completo</label>
                     <input type="text" id="fullName" name="fullName" class="form-input" placeholder="Tu nombre" required>
                 </div>

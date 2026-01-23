@@ -1,24 +1,115 @@
 {
   "users": [
-    { "id": 1, "name": "Admin", "email":  "admin@lib.com", "password":  "admin123", "role": "librarian"},
-    { "id": 2, "name": "Visitor", "email": "visitor@lib.com", "password": "visitor123", "role": "visitor"}
+    {
+      "id": "1",
+      "name": "Admin",
+      "email": "admin@lib.com",
+      "password": "admin123",
+      "role": "librarian"
+    },
+    {
+      "id": "2",
+      "name": "Visitor",
+      "email": "visitor@lib.com",
+      "password": "visitor123",
+      "role": "visitor"
+    }
   ],
-
   "books": [
-    { "id": 1, "title": "Clean Code", "author": "Robert C. Martin", "availableCopies": 0, "cover": "🧑🏽‍💻", "category": "Programming", "description": "A Handbook of Agile Software Craftsmanship" },
-    { "id": 2, "title": "Harry Potter and the Sorcerer's Stone", "author": "J.K. Rowling", "availableCopies": 5, "cover": "⚡️", "category": "Fantasy", "description": "The first book in the Harry Potter series." },
-    { "id": 3, "title": "The Lord of the Rings", "author": "J.R.R. Tolkien", "availableCopies": 2, "cover": "🧙‍♂️", "category": "Fantasy", "description": "An epic high-fantasy novel." },
-    { "id": 4, "title": "One Hundred Years of Solitude", "author": "Gabriel García Márquez", "availableCopies": 4, "cover": "📚", "category": "Magic realism", "description": "The story of the Buendía family in Macondo." },
-    { "id": 5, "title": "The Little Prince", "author": "Antoine de Saint-Exupéry", "availableCopies": 6, "cover": "👑", "category": "Children", "description": "A philosophical tale about a little prince and his journeys." },
-    { "id": 6, "title": "1984", "author": "George Orwell", "availableCopies": 5, "cover": "👁️", "category": "Dystopia", "description": "A world controlled by a totalitarian regime and Big Brother." },
-    { "id": 7, "title": "Don Quixote", "author": "Miguel de Cervantes", "availableCopies": 3, "cover": "⚔️", "category": "Classic", "description": "The adventures of the ingenious gentleman Don Quixote of La Mancha." },
-    { "id": 8, "title": "The Lord of the Rings", "author": "J.R.R. Tolkien", "availableCopies": 4, "cover": "💍", "category": "Epic fantasy", "description": "The journey to destroy the One Ring." }
+    {
+      "id": 1,
+      "title": "Clean Code",
+      "author": "Robert C. Martin",
+      "availableCopies": 1,
+      "cover": "🧑🏽‍💻",
+      "category": "Programming",
+      "description": "A Handbook of Agile Software Craftsmanship"
+    },
+    {
+      "id": 2,
+      "title": "Harry Potter and the Sorcerer's Stone",
+      "author": "J.K. Rowling",
+      "availableCopies": 6,
+      "cover": "⚡️",
+      "category": "Fantasy",
+      "description": "The first book in the Harry Potter series."
+    },
+    {
+      "id": 3,
+      "title": "The Lord of the Rings",
+      "author": "J.R.R. Tolkien",
+      "availableCopies": 2,
+      "cover": "🧙‍♂️",
+      "category": "Fantasy",
+      "description": "An epic high-fantasy novel."
+    },
+    {
+      "id": 4,
+      "title": "One Hundred Years of Solitude",
+      "author": "Gabriel García Márquez",
+      "availableCopies": 4,
+      "cover": "📚",
+      "category": "Magic realism",
+      "description": "The story of the Buendía family in Macondo."
+    },
+    {
+      "id": 5,
+      "title": "The Little Prince",
+      "author": "Antoine de Saint-Exupéry",
+      "availableCopies": 6,
+      "cover": "👑",
+      "category": "Children",
+      "description": "A philosophical tale about a little prince and his journeys."
+    },
+    {
+      "id": 6,
+      "title": "1984",
+      "author": "George Orwell",
+      "availableCopies": 5,
+      "cover": "👁️",
+      "category": "Dystopia",
+      "description": "A world controlled by a totalitarian regime and Big Brother."
+    },
+    {
+      "id": 7,
+      "title": "Don Quixote",
+      "author": "Miguel de Cervantes",
+      "availableCopies": 3,
+      "cover": "⚔️",
+      "category": "Classic",
+      "description": "The adventures of the ingenious gentleman Don Quixote of La Mancha."
+    },
+    {
+      "id": 8,
+      "title": "The Lord of the Rings",
+      "author": "J.R.R. Tolkien",
+      "availableCopies": 4,
+      "cover": "💍",
+      "category": "Epic fantasy",
+      "description": "The journey to destroy the One Ring."
+    }
   ],
-
   "loans": [
-    { "id": 1, "userId": 2, "ISBN": 1, "loanDate": "2024-01-15", "status": true },
-    { "id": 2, "userId": 2, "ISBN": 2, "loanDate": "2024-01-20", "status": false },
-    { "id": 3, "userId": 4, "ISBN": 2, "loanDate": "2024-01-20", "status": true }
+    {
+      "id": 1,
+      "userId": "2",
+      "bookId": 1,
+      "loanDate": "2024-01-15",
+      "status": false
+    },
+    {
+      "id": 2,
+      "userId": "2",
+      "bookId": 2,
+      "loanDate": "2024-01-20",
+      "status": false
+    },
+    {
+      "id": 3,
+      "userId": "4",
+      "bookId": 2,
+      "loanDate": "2024-01-20",
+      "status": false
+    }
   ]
 }
-
