@@ -1,4 +1,5 @@
-import {isLibrarian, isVisitor } from '../state/store.js';
+import {isLibrarian, isVisitor, getStore } from '../state/store.js';
+import { createLoan, getLoans } from "../services/apiService.js";
 
 function renderAvailabilityBadge(book) {
     const copies = Number(book.availableCopies ?? 0);
@@ -81,3 +82,5 @@ export function BookCard(book) {
 
     return article;
 }
+
+

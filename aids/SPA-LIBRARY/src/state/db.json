@@ -17,25 +17,25 @@
   ],
   "books": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Clean Code",
       "author": "Robert C. Martin",
-      "availableCopies": 1,
+      "availableCopies": 2,
       "cover": "🧑🏽‍💻",
       "category": "Programming",
       "description": "A Handbook of Agile Software Craftsmanship"
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "Harry Potter and the Sorcerer's Stone",
       "author": "J.K. Rowling",
-      "availableCopies": 6,
+      "availableCopies": 10,
       "cover": "⚡️",
       "category": "Fantasy",
       "description": "The first book in the Harry Potter series."
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "The Lord of the Rings",
       "author": "J.R.R. Tolkien",
       "availableCopies": 2,
@@ -44,7 +44,7 @@
       "description": "An epic high-fantasy novel."
     },
     {
-      "id": 4,
+      "id": "4",
       "title": "One Hundred Years of Solitude",
       "author": "Gabriel García Márquez",
       "availableCopies": 4,
@@ -53,7 +53,7 @@
       "description": "The story of the Buendía family in Macondo."
     },
     {
-      "id": 5,
+      "id": "5",
       "title": "The Little Prince",
       "author": "Antoine de Saint-Exupéry",
       "availableCopies": 6,
@@ -62,7 +62,7 @@
       "description": "A philosophical tale about a little prince and his journeys."
     },
     {
-      "id": 6,
+      "id": "6",
       "title": "1984",
       "author": "George Orwell",
       "availableCopies": 5,
@@ -71,7 +71,7 @@
       "description": "A world controlled by a totalitarian regime and Big Brother."
     },
     {
-      "id": 7,
+      "id": "7",
       "title": "Don Quixote",
       "author": "Miguel de Cervantes",
       "availableCopies": 3,
@@ -80,7 +80,7 @@
       "description": "The adventures of the ingenious gentleman Don Quixote of La Mancha."
     },
     {
-      "id": 8,
+      "id": "8",
       "title": "The Lord of the Rings",
       "author": "J.R.R. Tolkien",
       "availableCopies": 4,
@@ -91,25 +91,32 @@
   ],
   "loans": [
     {
-      "id": 1,
+      "id": "1",
       "userId": "2",
       "bookId": 1,
       "loanDate": "2024-01-15",
       "status": false
     },
     {
-      "id": 2,
+      "id": "2",
       "userId": "2",
       "bookId": 2,
       "loanDate": "2024-01-20",
       "status": false
     },
     {
-      "id": 3,
+      "id": "3",
       "userId": "4",
       "bookId": 2,
       "loanDate": "2024-01-20",
       "status": false
+    },
+    {
+      "id": 3,
+      "userId": "2",
+      "bookId": 1,
+      "loanDate": "2026-01-23",
+      "status": true
     }
   ]
 }

@@ -61,6 +61,5 @@ export function LoanItem(loan) {
         });
     }
 
-
     return tr;
 }

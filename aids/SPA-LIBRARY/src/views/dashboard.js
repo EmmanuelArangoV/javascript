@@ -46,7 +46,6 @@ export function dashboardView() {
     apiRequests(section, user);
 
     return section;
-
 }
 
 function apiRequests(section, user) {

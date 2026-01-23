@@ -844,88 +844,119 @@ body {
     .loans-container .card-body { padding: 0.9rem; }
 }
 
+/* styles for catalog modal - add to `styles.css` */
 
-/* css
-Add the following to `aids/SPA-LIBRARY/styles.css` */
-
-/* Confirm modal */
-.confirm-modal-overlay {
+#book-modal {
     position: fixed;
-    inset: 0;
+    inset: 0; /* top:0; right:0; bottom:0; left:0 */
+    display: none; /* shown when .open is added */
+    align-items: center;
+    justify-content: center;
+    background: rgba(3, 8, 18, 0.6); /* dark backdrop */
+    z-index: 9999;
+    padding: 1.25rem; /* breathing room on small screens */
+}
+
+/* Show modal */
+#book-modal.open {
+    display: flex;
+}
+
+/* Popup card */
+#book-modal .modal-popup {
+    width: 100%;
+    max-width: 720px;
+    background: var(--color-bg-alt);
+    color: var(--color-text);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-soft);
+    padding: 1.25rem;
+    position: relative;
+    max-height: calc(100vh - 3rem);
+    overflow-y: auto;
+    transform: translateY(8px);
+    opacity: 0;
+    transition: transform 180ms ease, opacity 180ms ease;
+}
+
+/* Animate when open */
+#book-modal.open .modal-popup {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Close button */
+#book-modal .close-popup-btn {
+    position: absolute;
+    right: 0.6rem;
+    top: 0.45rem;
+    background: transparent;
+    border: none;
+    color: var(--color-text);
+    font-size: 1.25rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0.25rem;
+}
+
+/* Modal body layout */
+#book-modal .modal-body {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+/* Cover area */
+#book-modal .modal-cover {
+    width: 120px;
+    height: 120px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(2,6,23,0.6);
-    z-index: 1200;
-    padding: 1rem;
-    transition: opacity 0.18s ease;
-}
-.confirm-modal-overlay[hidden] {
-    display: none;
+    font-size: 3.25rem;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.02);
+    flex-shrink: 0;
 }
 
-/* Modal card - reusa variables del proyecto */
-.confirm-modal {
-    width: 100%;
-    max-width: 520px;
-    border-radius: var(--radius-md);
-    background-color: var(--color-bg-alt);
-    border: 1px solid var(--color-border);
-    box-shadow: var(--shadow-soft);
-    overflow: hidden;
-    animation: modalEnter 0.16s ease-out;
-}
-
-@keyframes modalEnter {
-    from { transform: translateY(6px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
-
-.confirm-modal .card-body {
-    padding: 1.25rem;
-}
-
-.confirm-modal-title {
+/* Content text */
+#book-modal .modal-content h3 {
     margin: 0 0 0.35rem 0;
-    font-size: 1.05rem;
-    font-weight: 600;
-    color: var(--color-text);
+    font-size: 1.1rem;
 }
-
-.confirm-modal-message {
-    margin: 0 0 1rem 0;
+#book-modal .modal-content p {
+    margin: 0.25rem 0;
     color: var(--color-text-muted);
-    font-size: 0.95rem;
-    line-height: 1.3;
 }
 
-/* Acciones */
-.confirm-modal-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 0.5rem;
+/* Make sure long content wraps and popup remains usable */
+#book-modal .modal-content {
+    flex: 1;
+    min-width: 0; /* allow overflow/ellipsis children to work */
 }
 
-/* Tamaño y separación de botones coherentes con el proyecto */
-.confirm-modal .btn-sm {
-    padding: 0.32rem 0.8rem;
-    font-size: 0.85rem;
-}
-
-/* Variante de cancel/confirm para consistencia visual */
-.confirm-modal .navbar__button--outline {
-    background: transparent;
-    border: 1px solid var(--color-border);
-    color: var(--color-text);
-}
-.confirm-modal .navbar__button--outline:hover {
-    background-color: rgba(255,255,255,0.03);
-}
-
-.confirm-modal .navbar__button--primary {
-    background-color: var(--color-primary);
-    color: #fff;
-}
-.confirm-modal .navbar__button--primary:hover {
-    background-color: var(--color-primary-dark);
+/* Responsive: stack on small screens */
+@media (max-width: 520px) {
+    #book-modal {
+        padding: 0.75rem;
+    }
+    #book-modal .modal-popup {
+        max-width: 560px;
+        padding: 1rem;
+    }
+    #book-modal .modal-body {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0.75rem;
+    }
+    #book-modal .modal-cover {
+        width: 96px;
+        height: 96px;
+        font-size: 2.5rem;
+    }
+    #book-modal .close-popup-btn {
+        right: 0.5rem;
+        top: 0.35rem;
+    }
 }
