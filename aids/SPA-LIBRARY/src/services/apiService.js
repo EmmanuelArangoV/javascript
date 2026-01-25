@@ -41,6 +41,36 @@ export async function deleteBook(bookId) {
     return res.json();
 }
 
+// ===== Users API =====
+export async function getUsers() {
+    const res = await fetch(`${BASE_URL}/users`);
+    return res.json();
+}
+
+export async function getUserById(userId) {
+    const res = await fetch(`${BASE_URL}/users?id=${encodeURIComponent(userId)}`);
+    const users = await res.json();
+    return users.length > 0 ? users[0] : null;
+}
+
+export async function getUserByEmail(email) {
+    const res = await fetch(`${BASE_URL}/users?email=${encodeURIComponent(email)}`);
+    const users = await res.json();
+    return users.length > 0 ? users[0] : null;
+}
+
+export async function createUser(userData) {
+    const res = await fetch(`${BASE_URL}/users`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(userData)
+    });
+    if (!res.ok) {
+        throw new Error('Failed to create user');
+    }
+    return res.json();
+}
+
 // Loans
 
 export async function getLoans(userId = null) {
@@ -98,5 +128,3 @@ export async function returnLoan(loanId) {
         throw error;
     }
 }
-
-

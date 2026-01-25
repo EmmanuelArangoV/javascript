@@ -13,6 +13,13 @@
       "email": "visitor@lib.com",
       "password": "visitor123",
       "role": "visitor"
+    },
+    {
+      "id": "101",
+      "name": "Emmanuel",
+      "email": "emmanuel@lib.com",
+      "password": "emma1221",
+      "role": "visitor"
     }
   ],
   "books": [
@@ -20,7 +27,7 @@
       "id": "1",
       "title": "Clean Code",
       "author": "Robert C. Martin",
-      "availableCopies": 2,
+      "availableCopies": 7,
       "cover": "🧑🏽‍💻",
       "category": "Programming",
       "description": "A Handbook of Agile Software Craftsmanship"
@@ -29,7 +36,7 @@
       "id": "2",
       "title": "Harry Potter and the Sorcerer's Stone",
       "author": "J.K. Rowling",
-      "availableCopies": 10,
+      "availableCopies": 18,
       "cover": "⚡️",
       "category": "Fantasy",
       "description": "The first book in the Harry Potter series."
@@ -87,36 +94,52 @@
       "cover": "💍",
       "category": "Epic fantasy",
       "description": "The journey to destroy the One Ring."
+    },
+    {
+      "id": "987",
+      "title": "El Cementerio de los libros olvidados",
+      "author": "Carlos Ruiz Zafon",
+      "availableCopies": 12,
+      "cover": "📚",
+      "category": "Fiction",
+      "description": "Hermoso Libro"
     }
   ],
   "loans": [
     {
-      "id": "1",
+      "id": 1,
       "userId": "2",
-      "bookId": 1,
-      "loanDate": "2024-01-15",
+      "bookId": "1",
+      "loanDate": "2026-01-25",
       "status": false
     },
     {
-      "id": "2",
-      "userId": "2",
-      "bookId": 2,
-      "loanDate": "2024-01-20",
-      "status": false
-    },
-    {
-      "id": "3",
-      "userId": "4",
-      "bookId": 2,
-      "loanDate": "2024-01-20",
+      "id": 2,
+      "userId": "101",
+      "bookId": "1",
+      "loanDate": "2026-01-25",
       "status": false
     },
     {
       "id": 3,
-      "userId": "2",
-      "bookId": 1,
-      "loanDate": "2026-01-23",
+      "userId": "101",
+      "bookId": "5",
+      "loanDate": "2026-01-25",
       "status": true
+    },
+    {
+      "id": 4,
+      "userId": "2",
+      "bookId": "2",
+      "loanDate": "2026-01-25",
+      "status": false
+    },
+    {
+      "id": 5,
+      "userId": "2",
+      "bookId": "2",
+      "loanDate": "2026-01-25",
+      "status": false
     }
   ]
 }

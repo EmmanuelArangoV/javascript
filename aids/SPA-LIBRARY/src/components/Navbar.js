@@ -25,9 +25,6 @@ export function Navbar() {
                         <a href="#dashboard" class="navbar__link">Inicio</a>
                     </li>
                     <li class="navbar__item">
-                        <a href="#catalog" class="navbar__link">Catálogo</a>
-                    </li>
-                    <li class="navbar__item">
                         <a href="#loans" class="navbar__link">Reservas</a>
                     </li>
                 </ul>

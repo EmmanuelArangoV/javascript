@@ -11,7 +11,7 @@ const routes = {
     'register': registerView,
     'dashboard': dashboardView,
     'create-book': createBookView,
-    'loans': LoansView
+    'loans': LoansView,
 };
 
 export function router() {

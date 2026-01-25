@@ -402,21 +402,66 @@ body {
 /* ===== Catalog Controls ===== */
 .catalog-controls {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.catalog-controls .controls-header {
+    display: flex;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
+    justify-content: space-between;
 }
 
-.section-title {
-    font-size: 1.5rem;
-    font-weight: 600;
+.catalog-controls .controls-header .section-title {
+    margin: 0;
 }
 
-.search-wrapper {
-    flex: 1;
-    max-width: 400px;
+.catalog-controls .controls-search .search-wrapper {
+    width: 100%;
+}
+
+.catalog-controls .controls-search .form-input {
+    width: 100%;
+}
+
+/* Catálogo: barra única (título + búsqueda + botón) */
+.catalog-controls .controls-bar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.catalog-controls .controls-bar .section-title {
+  margin: 0;
+}
+.catalog-controls .controls-bar .search-wrapper {
+  flex: 1; /* que el buscador se expanda */
+}
+.catalog-controls .controls-bar .form-input {
+  width: 100%;
+}
+.catalog-controls .controls-bar #btn-create-book {
+  margin-left: auto; /* empuja el botón al extremo derecho */
+}
+
+/* Usa estilos de botones existentes */
+#btn-create-book.navbar__button.navbar__button--primary.btn-sm {
+  /* asegura coherencia visual con Editar libro */
+  border-radius: var(--radius-pill);
+  padding: 0.35rem 0.85rem;
+  font-size: 0.85rem;
+}
+
+/* Responsive: apilar en pantallas pequeñas */
+@media (max-width: 640px) {
+  .catalog-controls .controls-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .catalog-controls .controls-bar #btn-create-book {
+    margin-left: 0;
+    align-self: flex-end; /* botón abajo a la derecha */
+  }
 }
 
 /* ===== Books Grid ===== */
@@ -846,7 +891,7 @@ body {
 
 /* styles for catalog modal - add to `styles.css` */
 
-#book-modal {
+#book-modal, #edit-book-modal {
     position: fixed;
     inset: 0; /* top:0; right:0; bottom:0; left:0 */
     display: none; /* shown when .open is added */
@@ -858,12 +903,12 @@ body {
 }
 
 /* Show modal */
-#book-modal.open {
+#book-modal.open, #edit-book-modal.open {
     display: flex;
 }
 
 /* Popup card */
-#book-modal .modal-popup {
+#book-modal .modal-popup, #edit-book-modal .modal-popup {
     width: 100%;
     max-width: 720px;
     background: var(--color-bg-alt);
@@ -880,13 +925,13 @@ body {
 }
 
 /* Animate when open */
-#book-modal.open .modal-popup {
+#book-modal.open .modal-popup, #edit-book-modal.open .modal-popup {
     transform: translateY(0);
     opacity: 1;
 }
 
 /* Close button */
-#book-modal .close-popup-btn {
+#book-modal .close-popup-btn, #edit-book-modal .close-popup-btn {
     position: absolute;
     right: 0.6rem;
     top: 0.45rem;
@@ -900,14 +945,14 @@ body {
 }
 
 /* Modal body layout */
-#book-modal .modal-body {
+#book-modal .modal-body, #edit-book-modal .modal-body {
     display: flex;
     gap: 1rem;
     align-items: flex-start;
 }
 
 /* Cover area */
-#book-modal .modal-cover {
+#book-modal .modal-cover, #edit-book-modal .modal-cover {
     width: 120px;
     height: 120px;
     display: flex;
@@ -920,17 +965,17 @@ body {
 }
 
 /* Content text */
-#book-modal .modal-content h3 {
+#book-modal .modal-content h3, #edit-book-modal .modal-content h3 {
     margin: 0 0 0.35rem 0;
     font-size: 1.1rem;
 }
-#book-modal .modal-content p {
+#book-modal .modal-content p, #edit-book-modal .modal-content p {
     margin: 0.25rem 0;
     color: var(--color-text-muted);
 }
 
 /* Make sure long content wraps and popup remains usable */
-#book-modal .modal-content {
+#book-modal .modal-content, #edit-book-modal .modal-content {
     flex: 1;
     min-width: 0; /* allow overflow/ellipsis children to work */
 }
@@ -959,4 +1004,60 @@ body {
         right: 0.5rem;
         top: 0.35rem;
     }
+
+    /* Edit modal small screen */
+    #edit-book-modal {
+        padding: 0.75rem;
+    }
+    #edit-book-modal .modal-popup {
+        max-width: 560px;
+        padding: 1rem;
+    }
+    #edit-book-modal .modal-body {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0.75rem;
+    }
+    #edit-book-modal .modal-cover {
+        width: 96px;
+        height: 96px;
+        font-size: 2.5rem;
+    }
+    #edit-book-modal .close-popup-btn {
+        right: 0.5rem;
+        top: 0.35rem;
+    }
 }
+
+/* ===== Emoji Keyboard (Create Book) ===== */
+.emoji-keyboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.emoji-key {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: rgba(0, 0, 0, 0.2);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: border-color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.emoji-key:hover {
+  border-color: var(--color-primary);
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.emoji-key:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+

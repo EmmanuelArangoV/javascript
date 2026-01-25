@@ -1,3 +1,5 @@
+import { createUser, getUserByEmail, getUserById } from '../services/apiService.js';
+
 export function registerView() {
     const section = document.createElement('section');
     section.classList.add('auth-container');
@@ -34,7 +36,7 @@ export function registerView() {
                     <div class="form-group">
                         <label for="role" class="form-label">Tipo de cuenta</label>
                         <select id="role" name="role" class="form-input form-select">
-                            <option value="guest">Invitado</option>
+                            <option value="visitor">Visitante</option>
                             <option value="librarian">Bibliotecario (Admin)</option>
                         </select>
                     </div>
@@ -51,7 +53,63 @@ export function registerView() {
         </div>
     `;
 
+    // Lógica del formulario de registro con API
+    const form = section.querySelector('#register-form');
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // 1) Leer valores del formulario
+        const id = section.querySelector('#id').value.trim();
+        const name = section.querySelector('#fullName').value.trim();
+        const email = section.querySelector('#email').value.trim();
+        const password = section.querySelector('#password').value.trim();
+        const role = section.querySelector('#role').value; // solo 'visitor' o 'librarian'
+
+        // 2) Validaciones sencillas
+        if (!id || !name || !email || !password || !role) {
+            alert('Por favor, completa todos los campos.');
+            return;
+        }
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            alert('Por favor, ingresa un correo válido.');
+            return;
+        }
+        if (!['visitor','librarian'].includes(role)) {
+            alert('Rol inválido. Solo se permite Visitante o Bibliotecario.');
+            return;
+        }
+
+        try {
+            // 3) Validar que no exista usuario con el mismo ID o Email
+            const byId = await getUserById(id);
+            if (byId) {
+                alert('Ya existe un usuario con ese Id.');
+                return;
+            }
+            const byEmail = await getUserByEmail(email);
+            if (byEmail) {
+                alert('Ya existe un usuario con ese email.');
+                return;
+            }
+
+            // 4) Crear usuario en la API (JSON Server)
+            const newUser = { id, name, email, password, role };
+            const created = await createUser(newUser);
+            if (!created || !created.id) {
+                alert('No se pudo crear el usuario. Intenta nuevamente.');
+                return;
+            }
+
+            // 5) Feedback y navegación
+            alert('Usuario creado correctamente. Ahora puedes iniciar sesión.');
+            window.location.hash = '#login';
+        } catch (err) {
+            console.error('Error registrando usuario', err);
+            alert('Ocurrió un error al registrar. Revisa la consola y el servidor.');
+        }
+    });
+
     return section;
 }
-
-
